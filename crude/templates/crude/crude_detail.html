@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+        <p class="text-center"> Hello {{ request.user.username}} </p>
+{% else%}
+        <p class="text-center"> Hello anonymous user </p>
+{% endif %}
+
+<div class="card" style="width:18rem;" >
+    <div class="card-body" >
+        <h5 class="card-title"> {{crude.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{crude.subject}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{crude.score}}</h6>
+        <a class="btn btn-primary" href="/{{ crude.id}}/update" class="card-link">Update</a>
+        <a class="btn btn-danger" href="/{{ crude.id}}/delete" class="card-link">Delete</a>
+    </div>
+</div>
+<!--     <p>   Student name: {{crude.name}}|-->
+<!--           Subject: {{crude.subject}} |-->
+<!--           Score: {{crude.score}}-->
+<!--    </p>-->
+<!--    <a class="btn btn-primary" href="/{{ crude.id}}/update">Update</a>-->
+<!--    <a class="btn btn-danger" href="/{{ crude.id}}/delete">Delete</a>-->
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+ {% if request.user.is_authenticated %}
+   <p class="text-center"> Hello {{ request.user.username}} </p>
+   {% else%}
+   <p class="text-center"> Hello anonymous user </p>
+ {% endif %}
+
+<a class="btn btn-primary" href="/create">Add new student</a>
+
+    <table class="table">
+         <thead>
+         <tr>
+             <th scope="col">#</th>
+             <th scope="col">Name</th>
+             <th scope="col">Subject</th>
+             <th scope="col">Score</th>
+             <th scope="col">View</th>
+         </tr>
+         </thead>
+         <tbody>
+         {% for crude in crude_list %}
+             <tr>
+                 <th scope="row">{{forloop.counter}}</th>
+                 <td>{{crude.name}}</td>
+                 <td>{{crude.subject}}</td>
+                 <td>{{crude.score}}</td>
+                 <td><a class="btn btn-info" href="/{{crude.id}}">Info</a></td>
+             </tr>
+         {% endfor%}
+         </tbody>
+    </table>
+
+
+
+
+
+{% endblock %}
